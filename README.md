@@ -88,23 +88,7 @@ App will be available at:
    - Total clicks
    - Timestamp, source, and location of each click
 
----
 
-## ✅ Requirements Covered
-
-| Requirement                              | Status |
-|------------------------------------------|--------|
-| React app structure                      | ✅     |
-| Material UI usage                        | ✅     |
-| Custom Logging Middleware (no console)   | ✅     |
-| Unique Shortcodes (custom/generated)     | ✅     |
-| 30-minute default validity               | ✅     |
-| Client-side routing for redirection      | ✅     |
-| Full analytics tracking                  | ✅     |
-| LocalStorage used for session/history    | ✅     |
-| Clean UI, no external libraries used     | ✅     |
-
----
 
 ## 💡 Notes
 
