@@ -1,54 +1,37 @@
-// logger.js
+const LOGGING_API_URL = "http://20.244.56.144/evaluation-service/logs";
 
-import axios from 'axios';
-import { isValidStack, isValidLevel, isValidPackage } from './constants.js';
+async function Log(stack, level, pkg, message) {
+  const validStacks = ["frontend", "backend"];
+  const validLevels = ["debug", "info", "warn", "error", "fatal"];
+  const validPackages = [
+    "cache", "controller", "cronjob", "auth", "config",
+    "middleware", "utils", "component", "hook", "page", "state", "style"
+  ];
 
-// ✅ Replace this token with your actual token if provided
-const AUTH_TOKEN = 'Bearer YOUR_REAL_TOKEN';
-
-const LOG_API_URL = 'http://20.244.56.144/evaluation-service/logs';
-
-export async function Log(stack, level, pkg, message) {
-  if (!isValidStack(stack)) {
-    console.error(`[LOG ❌] Invalid stack: ${stack}`);
+  if (
+    !validStacks.includes(stack) ||
+    !validLevels.includes(level) ||
+    !validPackages.includes(pkg)
+  ) {
     return;
   }
 
-  if (!isValidLevel(level)) {
-    console.error(`[LOG ❌] Invalid level: ${level}`);
-    return;
-  }
-
-  if (!isValidPackage(stack, pkg)) {
-    console.error(`[LOG ❌] Invalid package '${pkg}' for stack '${stack}'`);
-    return;
-  }
-
-  const payload = {
+  const body = {
     stack,
     level,
     package: pkg,
-    message,
+    message
   };
 
   try {
-    const response = await axios.post(LOG_API_URL, payload, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: AUTH_TOKEN,
-      },
+    const res = await fetch(LOGGING_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
     });
-
-    if (response.status === 200) {
-      console.log(`✅ Log created: ${response.data.logID}`);
-    } else {
-      console.error('❌ Failed to log:', response.data);
-    }
+    const data = await res.json();
+    return data;
   } catch (error) {
-    if (error.response) {
-      console.error('❌ Failed to log:', error.response.data);
-    } else {
-      console.error('❌ Network or server error:', error.message);
-    }
   }
 }
+module.exports = { Log };

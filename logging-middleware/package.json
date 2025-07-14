@@ -1,12 +1,10 @@
 {
   "name": "logging-middleware",
   "version": "1.0.0",
-  "type": "module",
-  "main": "example.js",
+  "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "start": "node example.js"
+    "test": "node example.js"
   },
-  "dependencies": {
-    "axios": "^1.10.0"
-  }
+  "dependencies": {}
 }
