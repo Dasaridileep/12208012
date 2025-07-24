@@ -101,10 +101,10 @@ App will be available at:
 
 ## 👨‍💻 Author Details
 
-**Developer Name**: Your Name  
-**Roll Number**: YOUR-ROLL-NUMBER  
-**Email**: your.email@example.com  
-**Submitted For**: Campus Hiring Evaluation – Frontend Track  
+**Developer Name**: Dasari Dileep 
+**Roll Number**: 12208012 
+**Email**: dasaridileep82@gmail.com  
+**Submitted For**: Campus Hiring Evaluation k  
 **Company**: Afford Medical Technologies Pvt. Ltd.
 
 ---
